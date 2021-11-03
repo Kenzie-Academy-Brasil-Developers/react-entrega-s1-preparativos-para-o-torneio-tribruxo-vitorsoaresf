@@ -4,9 +4,14 @@ function Student({ student }) {
   return (
     student && (
       <div className="student-card">
-        <p>{student.name}</p>
-        <p>{student.house}</p>
-        <img alt="wizard-img" src={student.image} />
+        <img className={student.house} alt="wizard-img" src={student.image} />
+        <div className="student-card__box-img">
+          <div className={student.house[0]}></div>
+        </div>
+        <div className="student-card__description">
+          <p>{student.name}</p>
+          <p>{student.house}</p>
+        </div>
       </div>
     )
   );

@@ -75,7 +75,6 @@ function ShowStudents({ students }) {
     optionStudents[positionsListStudents[2]],
   ];
 
-  console.log(winner);
   return (
     studentGryffindor &&
     studentSlytherin &&
