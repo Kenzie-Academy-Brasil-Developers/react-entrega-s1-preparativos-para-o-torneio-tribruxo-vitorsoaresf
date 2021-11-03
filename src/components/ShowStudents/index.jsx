@@ -3,6 +3,23 @@ import { useState } from "react";
 import Student from "../Student";
 
 function ShowStudents({ students }) {
+  const randomNumbers = (limit) => {
+    let arrResult = [];
+    for (let i = 0; i < limit; i++) {
+      arrResult = [...arrResult, i];
+    }
+
+    return [
+      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
+      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
+      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
+    ];
+  };
+
+  const wizardWinner = () => {
+    setWinner(!winner);
+  };
+
   const quantityGryffindor = students.reduce(
     (acc, element) => (element.house === "Gryffindor" ? ++acc : acc),
     0
@@ -20,6 +37,7 @@ function ShowStudents({ students }) {
     0
   );
 
+  const [winner, setWinner] = useState(false);
   const [studentGryffindor, setStudentGryffindor] = useState(
     students.filter((wizard) => wizard.house === "Gryffindor")[
       Math.floor(Math.random() * quantityGryffindor)
@@ -43,37 +61,49 @@ function ShowStudents({ students }) {
     ]
   );
 
-  const listStudents = [
+  const optionStudents = [
     studentGryffindor,
     studentSlytherin,
     studentHufflepuff,
     studentRavenclaw,
   ];
 
-  const randomNumbers = (limit) => {
-    let arrResult = [];
-    for (let i = 0; i < limit; i++) {
-      arrResult = [...arrResult, i];
-    }
-
-    return [
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
-    ];
-  };
-
   const positionsListStudents = randomNumbers(4);
+  const studentsSelected = [
+    optionStudents[positionsListStudents[0]],
+    optionStudents[positionsListStudents[1]],
+    optionStudents[positionsListStudents[2]],
+  ];
 
+  console.log(winner);
   return (
     studentGryffindor &&
     studentSlytherin &&
     studentHufflepuff &&
     studentRavenclaw && (
-      <div className="container-students">
-        <Student student={listStudents[positionsListStudents[0]]} />
-        <Student student={listStudents[positionsListStudents[1]]} />
-        <Student student={listStudents[positionsListStudents[2]]} />
+      <div className="container">
+        <div className="container__students">
+          <Student student={studentsSelected[0]} />
+          <Student student={studentsSelected[1]} />
+          <Student student={studentsSelected[2]} />
+        </div>
+
+        <div className="teste">
+          {winner ? (
+            <>
+              <p>
+                {
+                  studentsSelected[
+                    Math.floor(Math.random() * studentsSelected.length)
+                  ].name
+                }
+              </p>
+              <button onClick={wizardWinner}>Rainiciar competição</button>
+            </>
+          ) : (
+            <button onClick={wizardWinner}>Iniciar competição!!!</button>
+          )}
+        </div>
       </div>
     )
   );

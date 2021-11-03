@@ -1,4 +1,15 @@
-.container-students {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container__students {
   color: white;
   display: flex;
+}
+
+.teste {
+  color: white;
 }
