@@ -3,7 +3,7 @@
   background-size: cover;
   width: 300px;
   height: 430px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   font-family: "Harry Potter", sans-serif;
   display: flex;
   flex-direction: column;
@@ -128,9 +128,18 @@
 }
 
 .student-card__description p {
-  color: rgb(46, 34, 1);
+  color: rgb(92, 51, 32);
   font-size: 1.8rem;
   margin: 5px;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .student-card {
+    margin: 0 10px;
+  }
 }
 
 @keyframes gryffindor {
@@ -159,13 +168,13 @@
 
 @keyframes hufflepuff {
   0% {
-    box-shadow: 0 0 2.5em rgb(201, 171, 0);
+    box-shadow: 0 0 2.5em rgb(145, 123, 0);
   }
   50% {
-    box-shadow: 0 0 0em rgb(201, 171, 0);
+    box-shadow: 0 0 0em rgb(145, 123, 0);
   }
   100% {
-    box-shadow: 0 0 2.5em rgb(201, 171, 0);
+    box-shadow: 0 0 2.5em rgb(145, 123, 0);
   }
 }
 
