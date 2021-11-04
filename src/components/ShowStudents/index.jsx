@@ -88,20 +88,48 @@ function ShowStudents({ students }) {
 
   const [studentsSelected, setStudentsSelected] = useState([]);
 
+  // MONTAGEM
   useEffect(() => {
-    // setOptionStudents([
-    //   studentGryffindor,
-    //   studentSlytherin,
-    //   studentHufflepuff,
-    //   studentRavenclaw,
-    // ]);
+    if (winner) {
+      setStudentGryffindor(
+        students.filter((wizard) => wizard.house === "Gryffindor")[
+          Math.floor(Math.random() * quantityGryffindor)
+        ]
+      );
 
+      setStudentSlytherin(
+        students.filter((wizard) => wizard.house === "Slytherin")[
+          Math.floor(Math.random() * quantitySlytherin)
+        ]
+      );
+
+      setStudentHufflepuff(
+        students.filter((wizard) => wizard.house === "Hufflepuff")[
+          Math.floor(Math.random() * quantityHufflepuff)
+        ]
+      );
+
+      setStudentRavenclaw(
+        students.filter((wizard) => wizard.house === "Ravenclaw")[
+          Math.floor(Math.random() * quantityRavenclaw)
+        ]
+      );
+
+      setOptionStudents([
+        studentGryffindor,
+        studentSlytherin,
+        studentHufflepuff,
+        studentRavenclaw,
+      ]);
+
+      setPositionsListStudents([...randomNumbers(4)]);
+    }
     setStudentsSelected([
       optionStudents[positionsListStudents[0]],
       optionStudents[positionsListStudents[1]],
       optionStudents[positionsListStudents[2]],
     ]);
-  }, []);
+  }, [winner]);
 
   return (
     studentsSelected.length === 3 && (
