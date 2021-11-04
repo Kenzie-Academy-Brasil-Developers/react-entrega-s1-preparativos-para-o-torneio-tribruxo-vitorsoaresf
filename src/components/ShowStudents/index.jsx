@@ -87,7 +87,7 @@ function ShowStudents({ students }) {
           <Student student={studentsSelected[2]} />
         </div>
 
-        <div className="teste">
+        <div className="container__bt">
           {winner ? (
             <>
               <p>
@@ -97,10 +97,14 @@ function ShowStudents({ students }) {
                   ].name
                 }
               </p>
-              <button onClick={wizardWinner}>Rainiciar competição</button>
+              <button onClick={wizardWinner}>
+                <i className="fas fa-redo"></i>
+              </button>
             </>
           ) : (
-            <button onClick={wizardWinner}>Iniciar competição!!!</button>
+            <button onClick={wizardWinner}>
+              <i className="fas fa-trophy"></i>
+            </button>
           )}
         </div>
       </div>
