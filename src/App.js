@@ -24,7 +24,7 @@ function App() {
       </div>
       <div className="box_home__button">
         <button onClick={() => setHome(!home)}>
-          <i class="fas fa-quidditch"></i>
+          <i className="fas fa-quidditch"></i>
         </button>
       </div>
       <div className="box_home__houses">
