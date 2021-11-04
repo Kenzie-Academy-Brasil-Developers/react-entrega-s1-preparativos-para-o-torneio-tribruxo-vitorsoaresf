@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Student from "../Student";
 
 function ShowStudents({ students }) {
@@ -10,9 +10,21 @@ function ShowStudents({ students }) {
     }
 
     return [
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
-      arrResult.splice(Math.floor(Math.random() * arrResult.length), 1),
+      parseInt(
+        arrResult
+          .splice(Math.floor(Math.random() * arrResult.length), 1)
+          .join("")
+      ),
+      parseInt(
+        arrResult
+          .splice(Math.floor(Math.random() * arrResult.length), 1)
+          .join("")
+      ),
+      parseInt(
+        arrResult
+          .splice(Math.floor(Math.random() * arrResult.length), 1)
+          .join("")
+      ),
     ];
   };
 
@@ -38,6 +50,7 @@ function ShowStudents({ students }) {
   );
 
   const [winner, setWinner] = useState(false);
+
   const [studentGryffindor, setStudentGryffindor] = useState(
     students.filter((wizard) => wizard.house === "Gryffindor")[
       Math.floor(Math.random() * quantityGryffindor)
@@ -55,31 +68,43 @@ function ShowStudents({ students }) {
       Math.floor(Math.random() * quantityHufflepuff)
     ]
   );
+
   const [studentRavenclaw, setStudentRavenclaw] = useState(
     students.filter((wizard) => wizard.house === "Ravenclaw")[
       Math.floor(Math.random() * quantityRavenclaw)
     ]
   );
 
-  const optionStudents = [
+  const [optionStudents, setOptionStudents] = useState([
     studentGryffindor,
     studentSlytherin,
     studentHufflepuff,
     studentRavenclaw,
-  ];
+  ]);
 
-  const positionsListStudents = randomNumbers(4);
-  const studentsSelected = [
-    optionStudents[positionsListStudents[0]],
-    optionStudents[positionsListStudents[1]],
-    optionStudents[positionsListStudents[2]],
-  ];
+  const [positionsListStudents, setPositionsListStudents] = useState([
+    ...randomNumbers(4),
+  ]);
+
+  const [studentsSelected, setStudentsSelected] = useState([]);
+
+  useEffect(() => {
+    // setOptionStudents([
+    //   studentGryffindor,
+    //   studentSlytherin,
+    //   studentHufflepuff,
+    //   studentRavenclaw,
+    // ]);
+
+    setStudentsSelected([
+      optionStudents[positionsListStudents[0]],
+      optionStudents[positionsListStudents[1]],
+      optionStudents[positionsListStudents[2]],
+    ]);
+  }, []);
 
   return (
-    studentGryffindor &&
-    studentSlytherin &&
-    studentHufflepuff &&
-    studentRavenclaw && (
+    studentsSelected.length === 3 && (
       <div className="container">
         <div className="container__students">
           <Student student={studentsSelected[0]} />
@@ -89,20 +114,18 @@ function ShowStudents({ students }) {
 
         <div className="container__bt">
           {winner ? (
-            <>
-              <p>
-                {
+            <div>
+              <Student
+                student={
                   studentsSelected[
                     Math.floor(Math.random() * studentsSelected.length)
-                  ].name
+                  ]
                 }
-              </p>
-              <button onClick={wizardWinner}>
-                <i className="fas fa-redo"></i>
-              </button>
-            </>
+              />
+              <button onClick={wizardWinner}>Clica</button>
+            </div>
           ) : (
-            <button onClick={wizardWinner}>
+            <button className="container__bt__iniciar" onClick={wizardWinner}>
               <i className="fas fa-trophy"></i>
             </button>
           )}

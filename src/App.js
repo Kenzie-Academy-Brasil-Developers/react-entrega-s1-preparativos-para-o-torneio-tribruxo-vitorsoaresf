@@ -23,7 +23,11 @@ function App() {
         <p>TRIBRUXO</p>
       </div>
       <div className="box_home__button">
-        <button onClick={() => setHome(!home)}>
+        <button
+          onClick={() => {
+            setHome(!home);
+          }}
+        >
           <i className="fas fa-quidditch"></i>
         </button>
       </div>
