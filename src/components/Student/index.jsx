@@ -11,6 +11,7 @@ function Student({ student }) {
         <div className="student-card__description">
           <p>{student.name}</p>
           <p>{student.house}</p>
+          <p>{student.species}</p>
         </div>
       </div>
     )

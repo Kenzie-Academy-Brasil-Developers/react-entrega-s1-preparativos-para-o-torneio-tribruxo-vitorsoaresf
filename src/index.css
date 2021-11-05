@@ -8,6 +8,8 @@ body {
   background-color: #282c34;
   display: flex;
   justify-content: center;
+  background-image: url(../src/assets/img/backgroundgame.png);
+  background-size: cover;
 }
 
 code {

@@ -142,15 +142,22 @@ function ShowStudents({ students }) {
 
         <div className="container__bt">
           {winner ? (
-            <div>
-              <Student
-                student={
-                  studentsSelected[
-                    Math.floor(Math.random() * studentsSelected.length)
-                  ]
-                }
-              />
-              <button onClick={wizardWinner}>Clica</button>
+            <div className="wizard-win">
+              <p className="wizard-win__title">
+                <i class="fas fa-trophy"></i>
+              </p>
+              <div className="style-student">
+                <Student
+                  student={
+                    studentsSelected[
+                      Math.floor(Math.random() * studentsSelected.length)
+                    ]
+                  }
+                />
+              </div>
+              <button onClick={wizardWinner}>
+                <i class="fas fa-undo"></i>
+              </button>
             </div>
           ) : (
             <button className="container__bt__iniciar" onClick={wizardWinner}>
