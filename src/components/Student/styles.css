@@ -1,3 +1,5 @@
+@import url("http://fonts.cdnfonts.com/css/harry-potter");
+
 .student-card {
   background-image: url(../../assets/img/moldura.png);
   background-size: cover;
@@ -10,23 +12,6 @@
   align-items: center;
   border-radius: 10px;
 }
-/* 
-.student-card:hover {
-  animation-name: float;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-@keyframes float {
-  0% {
-    margin-left: 0px;
-  }
-  50% {
-    margin-left: 10px;
-  }
-  100% {
-    margin-left: 0px;
-  }
-} */
 
 .student-card__box-img {
   display: flex;

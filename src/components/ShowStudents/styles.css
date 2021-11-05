@@ -1,3 +1,5 @@
+@import url("http://fonts.cdnfonts.com/css/harry-potter");
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,10 +19,8 @@
   height: 100px;
   display: flex;
   justify-content: center;
-  /* border-radius: 100%; */
   font-family: "Harry Potter", sans-serif;
   margin-top: 20px;
-  /* background-color: blue; */
 }
 
 .container__bt__iniciar {
@@ -33,17 +33,8 @@
   border-radius: 100%;
 }
 
-/* .container__bt button i {
-  border-radius: 100%;
-} */
-
-/* .container__bt :hover {
-  box-shadow: 0 0 1em gold;
-} */
-
 .wizard-win {
   position: absolute;
-  /* background-color: rgba(0, 0, 0, 0.657); */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -60,16 +51,17 @@
   border-radius: 100%;
   border: none;
   color: #f79f1f;
-  margin-top: 720px;
-
+  margin-top: -350px;
+  margin-left: 200px;
   cursor: pointer;
 }
 
 .wizard-win__title {
+  position: absolute;
   font-size: 5rem;
   color: #f79f1f;
-}
-.style-student {
+  margin-top: -350px;
+  margin-right: 200px;
 }
 
 @media (min-width: 1024px) {
@@ -106,7 +98,7 @@
     border: none;
     color: #f79f1f;
     margin-top: -400px;
-    margin-right: -200px;
+    margin-right: -50px;
     cursor: pointer;
   }
 
@@ -114,8 +106,7 @@
     font-size: 5rem;
     position: absolute;
     margin-top: -400px;
-    margin-left: -200px;
-    /* background-color: #66420b; */
+    margin-left: -50px;
     color: #f79f1f;
   }
 }

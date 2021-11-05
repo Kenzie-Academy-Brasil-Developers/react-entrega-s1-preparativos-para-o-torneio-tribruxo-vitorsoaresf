@@ -88,7 +88,7 @@ function ShowStudents({ students }) {
 
   const [studentsSelected, setStudentsSelected] = useState([]);
 
-  // MONTAGEM
+  //INICIALIZACAO E  MONTAGEM
   useEffect(() => {
     if (winner) {
       setStudentGryffindor(
