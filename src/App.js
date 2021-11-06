@@ -13,7 +13,8 @@ function App() {
       .then((response) => response.json())
       .then((response) =>
         setStudents(response.filter((wizard) => wizard.image !== ""))
-      );
+      )
+      .catch((err) => console.error(err));
   }, []);
 
   return home ? (
