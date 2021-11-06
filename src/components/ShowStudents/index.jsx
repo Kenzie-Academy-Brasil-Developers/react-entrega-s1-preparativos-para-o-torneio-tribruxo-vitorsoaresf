@@ -32,47 +32,54 @@ function ShowStudents({ students }) {
     setWinner(!winner);
   };
 
-  const quantityGryffindor = students.reduce(
-    (acc, element) => (element.house === "Gryffindor" ? ++acc : acc),
-    0
-  );
-  const quantitySlytherin = students.reduce(
-    (acc, element) => (element.house === "Slytherin" ? ++acc : acc),
-    0
-  );
-  const quantityHufflepuff = students.reduce(
-    (acc, element) => (element.house === "Hufflepuff" ? ++acc : acc),
-    0
-  );
-  const quantityRavenclaw = students.reduce(
-    (acc, element) => (element.house === "Ravenclaw" ? ++acc : acc),
-    0
-  );
+  const returnQuantityStudents = (house) => {
+    return students.reduce(
+      (acc, element) => (element.house === house ? ++acc : acc),
+      0
+    );
+  };
+
+  const returnOneStudentHouse = (house) => {
+    if (house === "Gryffindor") {
+      return students.filter((wizard) => wizard.house === "Gryffindor")[
+        Math.floor(Math.random() * quantityGryffindor)
+      ];
+    } else if (house === "Slytherin") {
+      return students.filter((wizard) => wizard.house === "Slytherin")[
+        Math.floor(Math.random() * quantitySlytherin)
+      ];
+    } else if (house === "Hufflepuff") {
+      return students.filter((wizard) => wizard.house === "Hufflepuff")[
+        Math.floor(Math.random() * quantityHufflepuff)
+      ];
+    } else {
+      return students.filter((wizard) => wizard.house === "Ravenclaw")[
+        Math.floor(Math.random() * quantityRavenclaw)
+      ];
+    }
+  };
+
+  const quantityGryffindor = returnQuantityStudents("Gryffindor");
+  const quantitySlytherin = returnQuantityStudents("Slytherin");
+  const quantityHufflepuff = returnQuantityStudents("Hufflepuff");
+  const quantityRavenclaw = returnQuantityStudents("Ravenclaw");
 
   const [winner, setWinner] = useState(false);
 
   const [studentGryffindor, setStudentGryffindor] = useState(
-    students.filter((wizard) => wizard.house === "Gryffindor")[
-      Math.floor(Math.random() * quantityGryffindor)
-    ]
+    returnOneStudentHouse("Gryffindor")
   );
 
   const [studentSlytherin, setStudentSlytherin] = useState(
-    students.filter((wizard) => wizard.house === "Slytherin")[
-      Math.floor(Math.random() * quantitySlytherin)
-    ]
+    returnOneStudentHouse("Slytherin")
   );
 
   const [studentHufflepuff, setStudentHufflepuff] = useState(
-    students.filter((wizard) => wizard.house === "Hufflepuff")[
-      Math.floor(Math.random() * quantityHufflepuff)
-    ]
+    returnOneStudentHouse("Hufflepuff")
   );
 
   const [studentRavenclaw, setStudentRavenclaw] = useState(
-    students.filter((wizard) => wizard.house === "Ravenclaw")[
-      Math.floor(Math.random() * quantityRavenclaw)
-    ]
+    returnOneStudentHouse("Ravenclaw")
   );
 
   const [optionStudents, setOptionStudents] = useState([
@@ -91,29 +98,13 @@ function ShowStudents({ students }) {
   //INICIALIZACAO E  MONTAGEM
   useEffect(() => {
     if (winner) {
-      setStudentGryffindor(
-        students.filter((wizard) => wizard.house === "Gryffindor")[
-          Math.floor(Math.random() * quantityGryffindor)
-        ]
-      );
+      setStudentGryffindor(returnOneStudentHouse("Gryffindor"));
 
-      setStudentSlytherin(
-        students.filter((wizard) => wizard.house === "Slytherin")[
-          Math.floor(Math.random() * quantitySlytherin)
-        ]
-      );
+      setStudentSlytherin(returnOneStudentHouse("Slytherin"));
 
-      setStudentHufflepuff(
-        students.filter((wizard) => wizard.house === "Hufflepuff")[
-          Math.floor(Math.random() * quantityHufflepuff)
-        ]
-      );
+      setStudentHufflepuff(returnOneStudentHouse("Hufflepuff"));
 
-      setStudentRavenclaw(
-        students.filter((wizard) => wizard.house === "Ravenclaw")[
-          Math.floor(Math.random() * quantityRavenclaw)
-        ]
-      );
+      setStudentRavenclaw(returnOneStudentHouse("Ravenclaw"));
 
       setOptionStudents([
         studentGryffindor,
